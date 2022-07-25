@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CaptureImageMode</class>
+ <widget class="QWidget" name="CaptureImageMode">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>753</width>
+    <height>579</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>图像采集</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,4">
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="captureModeTab">
+        <attribute name="title">
+         <string>采集模式</string>
+        </attribute>
+        <widget class="QWidget" name="">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>10</y>
+           <width>171</width>
+           <height>511</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QGroupBox" name="groupBox">
+            <property name="title">
+             <string>图像模式</string>
+            </property>
+            <widget class="QRadioButton" name="cameraCaptureImgRBtn">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>30</y>
+               <width>115</width>
+               <height>19</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>相机取图</string>
+             </property>
+            </widget>
+            <widget class="QRadioButton" name="imageFileRBtn">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>60</y>
+               <width>115</width>
+               <height>19</height>
+              </rect>
+             </property>
+             <property name="mouseTracking">
+              <bool>true</bool>
+             </property>
+             <property name="acceptDrops">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>图像文件</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+            <widget class="QRadioButton" name="imageDocRbtn">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>90</y>
+               <width>115</width>
+               <height>19</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>图像文件夹</string>
+             </property>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="title">
+             <string>GroupBox</string>
+            </property>
+            <widget class="QLineEdit" name="imageNamelE">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>40</y>
+               <width>151</width>
+               <height>21</height>
+              </rect>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="getImageBtn">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>80</y>
+               <width>93</width>
+               <height>28</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>获取图像</string>
+             </property>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="paraTab">
+        <attribute name="title">
+         <string>参数设置</string>
+        </attribute>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="ViewWidgets" name="imgWidget" native="true"/>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ViewWidgets</class>
+   <extends>QWidget</extends>
+   <header>viewwidgets.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

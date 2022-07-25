@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="18.11.3.0">
+<procedure name="main">
+<interface/>
+<body>
+<l>dev_close_window ()</l>
+<l>dev_open_window (0, 0, -1, -1, 'black', WindowHandle)</l>
+<l>read_image (Image, 'C:/Users/xiao\'xin/Desktop/MVS图像/angle25.bmp')</l>
+<l>get_image_size (Image, Width, Height)</l>
+<c></c>
+<l>dev_set_line_width (1)</l>
+<c>* 标记测量位置</c>
+<l>create_drawing_object_rectangle2 (500, 500, 0, 50, 50, DrawID)</l>
+<l>set_drawing_object_params (DrawID, 'color', 'red')</l>
+<l>attach_drawing_object_to_window (WindowHandle, DrawID)</l>
+<l>get_drawing_object_params (DrawID,  ['row','column', 'phi', 'length1', 'length2'], GenParamValue)</l>
+<l>row1:=GenParamValue[0]-GenParamValue[4]*cos(GenParamValue[2])</l>
+<l>column1:=GenParamValue[1]-GenParamValue[4]*sin(GenParamValue[2])</l>
+<l>row2:=GenParamValue[0]+GenParamValue[3]*cos(GenParamValue[2])</l>
+<l>column2:=GenParamValue[1]+GenParamValue[3]*sin(GenParamValue[2])</l>
+<c></c>
+<l>LineParams := [row1, column1,row2, column2]</l>
+<c></c>
+<c>* 创建测量句柄</c>
+<l>create_metrology_model (MetrologyHandle)</l>
+<c>* 添加测量对象</c>
+<l>set_metrology_model_image_size (MetrologyHandle, Width, Height)</l>
+<c>**MeasureLength1/MeasureLength2/MeasureSigma/MeasureThreshold/Index</c>
+<c>**垂直边界宽度/平行边界宽度/高斯系数/最小边界灰度差/返回形状索引</c>
+<c>**GenParamName/GenParamValue 默认为空，通过set_metrology_object_param算子设置</c>
+<l>add_metrology_object_generic (MetrologyHandle, ['line'], [LineParams], 20, 2, 1, 30, [], [], Index)</l>
+<c></c>
+<c>** 设置测量对象的参数</c>
+<c>*measure_transition 边缘极性 'negative'白到黑  'positive'黑到白</c>
+<l>set_metrology_object_param (MetrologyHandle, 'all', 'measure_transition', 'negative')</l>
+<c>*num_measures 检测区域数量，如果在'measure_distance'后设置该参数，则'measure_distance'不产生效果，两个只需设置一个</c>
+<l>* set_metrology_object_param (MetrologyHandle, 'all', 'num_measures',10)</l>
+<c>*num_instances 最大数量安装成功后每个计量对象实例拟合停止，成功安装计量对象必须至少达到'min_score'</c>
+<l>set_metrology_object_param (MetrologyHandle, 'all', 'num_instances', 2)</l>
+<c>*高斯平滑，描述运营商measure_pos参数</c>
+<l>set_metrology_object_param (MetrologyHandle, 'all', 'measure_sigma', 1)</l>
+<c>*垂直边界检测区域一半宽度</c>
+<l>set_metrology_object_param (MetrologyHandle, 'all', 'measure_length1', 20)</l>
+<c>*平行边界检测区域一半宽度</c>
+<l>set_metrology_object_param (MetrologyHandle, 'all', 'measure_length2', 2)</l>
+<c>*两个检测区域中心点间距</c>
+<l>set_metrology_object_param (MetrologyHandle, 'all', 'measure_distance', 5)</l>
+<c>*检测边界最小灰度差值</c>
+<l>set_metrology_object_param (MetrologyHandle, 'all', 'measure_threshold',100)</l>
+<c>*插值类型，该参数省缺值描述gen_measure_rectangle2参数插值</c>
+<l>set_metrology_object_param (MetrologyHandle, 'all', 'measure_interpolation', 'bicubic')</l>
+<c>*指定端点的边缘，该参数默认描述measure_pos参数选择</c>
+<l>set_metrology_object_param (MetrologyHandle, 'all', 'measure_select', 'last')</l>
+<c>*判定有效计量对象边缘的最小得分，比分计算方法：边缘检测数量结果/检测区域最大数量（见apply_metrology_model）</c>
+<l>set_metrology_object_param (MetrologyHandle, 'all', 'min_score', 0.8)</l>
+<c></c>
+<c>* 执行测量，获取边缘点集</c>
+<l>dev_set_color ('yellow')</l>
+<l>apply_metrology_model (Image, MetrologyHandle)</l>
+<l>get_metrology_object_measures (Contours, MetrologyHandle, 'all', 'all', Row, Column)</l>
+<l>dev_set_color ('red')</l>
+<l>gen_cross_contour_xld (Cross, Row, Column, 6, 0.785398)</l>
+<c></c>
+<c>* 获取最终测量数据和轮廓线</c>
+<l>dev_set_color ('green')</l>
+<l>dev_set_line_width (2)</l>
+<l>get_metrology_object_result (MetrologyHandle, 'all', 'all', 'result_type', 'all_param', Parameter)</l>
+<l>get_metrology_object_result_contour (Contour, MetrologyHandle, 'all', 'all', 1.5)</l>
+<c></c>
+<c>* 释放测量句柄</c>
+<l>clear_metrology_model (MetrologyHandle)</l>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>

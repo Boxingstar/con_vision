@@ -1,0 +1,8 @@
+﻿生成启动时间为 2022/1/11 16:04:43。
+     1>项目“D:\Program\vision_code\Com_vision\Com_vision\Com_vision.vcxproj”在节点 2 上(Build 个目标)。
+     1>C:\Users\LENOVO\AppData\Local\QtMsBuild\qt_vars.targets(68,5): error : There's no Qt version assigned to project Com_vision.vcxproj for configuration Release/x64. Please assign a Qt installation in 'Qt Project Settings'.
+     1>已完成生成项目“D:\Program\vision_code\Com_vision\Com_vision\Com_vision.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.02

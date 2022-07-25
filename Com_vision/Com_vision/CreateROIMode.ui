@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CreateROIMode</class>
+ <widget class="QWidget" name="CreateROIMode">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>844</width>
+    <height>665</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CreateROIMode</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tab">
+        <attribute name="title">
+         <string>模式选择</string>
+        </attribute>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>171</width>
+           <height>151</height>
+          </rect>
+         </property>
+         <property name="title">
+          <string>ROI类型</string>
+         </property>
+         <widget class="QRadioButton" name="radioButton_3">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>115</width>
+            <height>19</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>矩形</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="radioButton_4">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>70</y>
+            <width>115</width>
+            <height>19</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>圆形</string>
+          </property>
+         </widget>
+         <widget class="QRadioButton" name="radioButton_5">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>110</y>
+            <width>115</width>
+            <height>19</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>自定义</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="ViewWidgets" name="widget" native="true">
+         <property name="geometry">
+          <rect>
+           <x>210</x>
+           <y>0</y>
+           <width>610</width>
+           <height>641</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(85, 255, 96);</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_circle">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>200</y>
+           <width>101</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>circle</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_rectangular">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>240</y>
+           <width>101</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>rectangular</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_line">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>280</y>
+           <width>101</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>line</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_matching">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>330</y>
+           <width>93</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>template_matching</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab_2">
+        <attribute name="title">
+         <string>参数设置</string>
+        </attribute>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ViewWidgets</class>
+   <extends>QWidget</extends>
+   <header>viewwidgets.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
